@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+  {{- super() }}
+  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
+{%- endblock seo %}
+
+{%- block content %}
+<div>
+  {%- if section.title %}
+  <h1>{{ section.title }}</h1>
+  {%- endif %}
+
+  {% set_global notes = [] %}
+  {%- set root = get_section(path='_index.md') %}
+  {%- for sect in root.subsections %}
+    {%- set sub = get_section(path=sect) %}
+    {%- if sub.extra.note  %}
+    {% set_global notes = notes | concat(with=sub.pages) %}
+    {%- endif %}
+  {%- endfor %}
+  {%- for note in notes %}
+  <article><a href="{{ note.permalink }}">{{ note.title | safe }}</a>
+    <p>{{ note.date }}</p>
+    <div>{{ note.content | safe }}</div>
+  </article>
+  {%- endfor %}
+
+</div>
+{%- endblock content %}
+

@@ -1,0 +1,140 @@
+{%- macro post_preview(post) %}
+<article>
+    <span class="flex"><h3 class=""><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
+    <time>{{ post.date | date(format="%b %Y") }}</time>
+    </span>
+    <hr class="underline" />
+    <div class="preview mb">
+      {%- if post.summary -%}
+        {{ post.summary | safe }}
+        {# {%- elif post.description %} {{ post.description }} #}
+      {%- else %}
+        {{ post.content | striptags | truncate(length=300, end="") | safe }}
+      {%- endif %}
+      {#<span class="w-full"><a href="{{ post.permalink }}#continue-reading">Continue...</a></span>#}
+      <span class="w-full"><a href="{{ post.permalink }}">Continue...</a></span>
+    </div>
+</article>
+{% endmacro post_preview %}
+
+{%- macro page_title(page) %}
+<h1><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
+{%- endmacro page_title %}
+
+{%- macro page_meta(page) %}
+  <span class="page-meta">
+    {%- if page.date %}
+      Published {{ page.date | date(format="%_d %b, %Y") }} 
+      {%- if page.updated %}, updated {{ page.updated | date(format="%_d %b, %Y") }}{% endif %}.
+    {% endif %}
+  </span>
+{%- endmacro page_meta %}
+
+{%- macro page_footer(page) %}
+<span>
+    {%- if page.taxonomies.tags %} Tags: {%- for tag in page.taxonomies.tags %} <a href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">{{ tag }}</a> {% endfor -%}{%- endif %}
+</span>
+{%- endmacro page_footer %}
+
+{%- macro pagination(paginator, config)%}
+{%- if paginator.number_pagers > 1 %}
+          {%- if paginator.number_pagers <= 5 %}  {# 5 or less pager is simple, just display all 5 #}
+              {%- set start = 1 %}
+              {%- set end = paginator.number_pagers %}
+          {%- endif %}
+
+          {%- if paginator.number_pagers > 5 %}
+
+              {%- if paginator.current_index >= 3 %}                {# Check if the first number will be 1 or not #}
+                  {%- set start = paginator.current_index - 2 %}    {# Set the start number #}
+                  {%- if paginator.number_pagers - paginator.current_index < 2 %}  {# the last two pages your no longer centered with equal pages start and end #}
+                      {%- set difference = paginator.number_pagers - paginator.current_index %}
+                      {%- set compensation =  1 - difference %}
+                      {%- set start = paginator.current_index - 3 - compensation %}  {# however many pages are missing on the end, add offset to start #}
+                  {%- endif %}
+              {%- else %}
+                  {%- set start = 1 %}
+              {%- endif %}
+
+              {%- if paginator.number_pagers >= paginator.current_index + 2 %}  {# Check if the last page is beyond our range #}
+                  {%- set end = paginator.current_index + 2 %}  {# End is beyond our range so we can safely set it to our range #}
+                  {%- if paginator.current_index <= 3 %}  {# check offset start, if on page 1 or 2 then set the end to page 5 #}
+                      {%- set end = 5 %}
+                  {%- endif %}
+              {%- else %}
+                  {%- set end = paginator.number_pagers %}
+              {%- endif %}
+          {%- endif %}
+    <nav>
+      {%- set icon_first=config.extra.icon_first | default(value="svgs svgh angll") -%}
+      {%- set icon_prev=config.extra.icon_prev | default(value="svgs svgh angl") -%}
+      {%- set icon_next=config.extra.icon_next | default(value="svgs svgh angr") -%}
+      {%- set icon_last=config.extra.icon_last | default(value="svgs svgh angrr") -%}
+      {%- if paginator.previous -%}
+        <a class="on outp" href="{{ paginator.first | safe }}{%- if uglyurls %}index.html{%- endif %}" title="First Page">
+        {%- if icon_first -%}<i class="{{ icon_first }}" alt="First Page"></i>
+        {%- else -%}&#171;
+        {%- endif -%}
+        </a>
+      {%- else -%}
+        <span class="off outp">
+        {%- if icon_first -%}<i class="{{ icon_first }}" alt="First Page"></i>
+        {%- else -%}&#171;
+        {%- endif -%}
+        </span>
+      {%- endif -%}
+
+      {%- if paginator.previous -%}
+        <a class="on outp" href="{{ paginator.previous | safe }}{%- if uglyurls %}index.html{%- endif %}" title="Previous Page">
+        {%- if icon_prev -%}<i class="{{ icon_prev }}" alt="Previous Page"></i>
+        {%- else -%}&#8249;
+        {%- endif -%}
+        </a>
+      {%- else -%}
+        <span class="off outp">
+        {%- if icon_prev -%}<i class="{{ icon_prev }}" alt="Previous Page"></i>
+        {%- else -%}&#8249;
+        {%- endif -%}
+        </span>
+      {%- endif -%}
+
+      {%- for i in range(start=start, end=end+1) -%}
+          {%- if i == paginator.current_index -%}
+          <a class="inp on cnav" href="#">{{i}}</a>
+          {%- elif i > 1 -%}
+          <a class="inp on" href="{{ paginator.base_url | safe }}{{ i ~ '/' }}{%- if uglyurls %}index.html{%- endif %}">{{i}}</a>
+          {%- else -%}
+          <a class="inp on" href="{{ paginator.first | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ i }}</a>
+          {%- endif -%}
+      {%- endfor -%}
+
+      {%- if paginator.next -%}
+        <a class="on outp" href="{{ paginator.next | safe }}{%- if uglyurls %}index.html{%- endif %}" title="Next Page">
+        {%- if icon_next -%}<i class="{{ icon_next }}" alt="Next Page"></i>
+        {%- else -%}&#8250;
+        {%- endif -%}
+        </a>
+      {%- else -%}
+        <span class="off outp">
+        {%- if icon_next -%}<i class="{{ icon_next }}" alt="Next Page"></i>
+        {%- else -%}&#8250;
+        {%- endif -%}
+        </span>
+      {%- endif -%}
+
+      {%- if paginator.next -%}
+        <a class="on outp" href="{{ paginator.last | safe }}{%- if uglyurls %}index.html{%- endif %}" title="Last Page">
+        {%- if icon_last -%}<i class="{{ icon_last }}" alt="Last Page"></i>
+        {%- else -%}&#187;
+        {%- endif -%}
+        </a>
+      {%- else -%}
+        <span class="off outp">
+        {%- if icon_last -%}<i class="{{ icon_last }}" alt="Last Page"></i>
+        {%- else -%}&#187;
+        {%- endif -%}
+        </span>
+      {%- endif -%}
+    </nav>
+{%- endif %}
+{%- endmacro %}

@@ -1,0 +1,86 @@
+<nav>
+  {# breadcrumbs or ancestor link #}
+{% if false %}
+<div class="breadcrumb-container">
+    {#% if not prev = / %}
+    <a class="breadcrumb-path" href="/"><-- back</a>
+    {% endif %#}
+    <a class="breadcrumb-path" href="/">Home</a>
+    {% set current = page %}
+    {% for ancestor in current.ancestors %}
+    {% if loop.first %}
+    {% continue %}
+    {% endif %}
+    <span class="breadcrumb-separator">/</span>
+    {% set section = get_section(path=ancestor) %}
+    <a class="breadcrumb-path" href="{{ section.permalink }}">{{ section.title }}</a>
+    {% endfor %}
+    <span class="breadcrumb-separator">/</span>
+    <a class="breadcrumb-path active" href="{{ current.permalink }}">{{ current.title }}</a>
+</div>
+{% endif %}
+
+  <div>
+    {#<style> #navback { display: none; } </style>
+    <span id="navback">
+      <a href="javascript:history.back()" title="Back">&larr;</a>
+    </span><!-- &#x25c0; -->#}
+    <!-- <span> -->
+    <!-- <a href="{{ get_url(path="/") }}" title="{{config.title}}">Home</a> -->
+    <!-- </span> -->
+
+    <span>
+    {% for link in config.extra.nav %}
+    <a {% if current_path and current_path == link.path %} href="" class="active" {% else %} href="{{ link.path }}" {% endif %}>{{ link.name }}</a>
+    {% endfor %}
+    </span>
+  </div>
+  {#<script>
+    document.getElementById('navback').style.display = 'inline-block';
+  </script>#}
+</nav>
+
+{#
+<nav>
+  <div>
+    {%- if config.extra.logo -%}
+
+    <h1><a href="{{ get_url(path="/") }}" title="{{config.title}}">
+    {%- if config.extra.logo.file -%}
+    <img src="{{ config.base_url | safe }}/{{ config.extra.logo.file | safe }}"{%- if config.extra.logo.alt %} alt="{{ config.extra.logo.alt | safe }}"{%- endif %}{%- if config.extra.logo.width %} width="{{ config.extra.logo.width | safe }}"{%- endif %}{%- if config.extra.logo.height %} height="{{ config.extra.logo.height | safe }}"{%- endif %} />
+    {%- endif -%}
+    {%- if config.extra.logo.text -%}{{ config.extra.logo.text | safe }}{%- endif -%}
+    </a></h1>
+
+    {%- elif config.extra.textlogo -%}
+    <h1><a href="{{ get_url(path="/") }}" title="{{config.title}}">{{ config.extra.textlogo | safe }}</a></h1>
+    {%- elif config.title -%}
+    <h1><a href="{{ get_url(path="/") }}" title="{{config.title}}">{{ config.title | safe }}</a></h1>
+    {%- endif -%}
+  </div>
+  <div>
+
+    <div>
+      <ul>
+
+#}
+        {#
+        {%- set js_switcher=config.extra.js_switcher %}
+        {%- if config.extra.menu %}
+          {%- for link in config.extra.menu -%}
+            <li><a{%- if link.size %} class="{{ link.size }}"{% endif %} href="{%- if link.url is matching("^http[s]?://") %}{{ link.url }}{%- else -%}{{ get_url(path=link.url, trailing_slash=i.slash) }}{%- endif %}"{% if i.blank %} target="_blank"{% endif %}>
+            </a></li>
+          {%- endfor -%}
+        {%- endif -%}
+
+        {%- if js_switcher -%}
+          {%- set icon_adjust=config.extra.icon_adjust | default(value="svgs adjust") -%}
+          {%- if icon_adjust -%}<li><i type="reset" id="mode" class="js {{ icon_adjust }}"></i>{%- else -%}<i type="reset" id="mode" class="js mode">&#9728;</i></li>{%- endif -%}
+        {%- endif -%}
+        #}
+{#
+
+      </ul>
+    </div>
+</nav>
+#}

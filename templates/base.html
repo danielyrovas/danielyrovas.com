@@ -1,0 +1,86 @@
+{%- import 'macros/seo.html' as macros_seo %}
+{%- import "macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {%- include "partials/head.html" %}
+
+  {#- SEO: title, description, etc #}
+  {%- block seo %}
+    {%- if config.extra.title_separator %}
+      {%- set title_separator = " " ~ config.extra.title_separator ~ " " -%}
+    {%- else %}
+      {%- set title_separator = " | " -%}
+    {%- endif %}
+
+    {%- if page.title %}
+      {%- set title = page.title %}
+      {%- set title_addition = title_separator ~ config.title %}
+    {%- elif section.title %}
+      {%- set title = section.title %}
+      {%- set title_addition = title_separator ~ config.title %}
+    {%- else %}
+      {%- set title = config.title %}
+      {%- if config.extra.title_addition %}
+        {%- set title_addition = title_separator ~ config.extra.title_addition %}
+      {%- else %}
+        {%- set title_addition = "" %}
+      {%- endif %}
+    {%- endif %}
+
+    {%- if page.description %}
+      {%- set description = page.description %}
+    {%- elif section.description %}
+      {%- set description = section.description %}
+    {%- else %}
+      {%- set description = config.description %}
+    {%- endif %}
+  {%- endblock seo %}
+
+  {%- include "partials/head_js.html" %}
+</head>
+<body hx-boost="true">
+  <div id="site-wrapper">
+  <header>
+
+  {%- block header %}
+    <a href="/">
+    <h1 class="underlined">
+      {{ config.title }}
+      <div class="underline"></div>
+    </h1>
+    </a>
+    {%- include "partials/nav.html" %}
+  {%- endblock header %}
+  </header>
+  <main>
+  {%- block content %}
+  {%- endblock content %}
+  </main>
+{%- block footer %}
+  <footer>
+    {%- if config.extra.foothr %}
+    <hr />
+    {%- endif %}
+    <div class="c">
+      {%- if config.extra.copyright -%}
+      {%- set current_year = now() | date(format="%Y") %}
+      {%- set current_year = '<span id="year">' ~ current_year ~ '</span>' %}
+      {%- set copyright_string = "&copy; " ~ current_year ~ " " ~ config.extra.author %}
+      <p>{{ copyright_string | safe }}</p>
+      {%- endif -%}
+
+      {%- if config.extra.menu_footer %}
+      <nav>
+        {%- for link in config.extra.menu_footer -%}
+        {%- set furl=get_url(path=link.url, trailing_slash=link.slash) %}
+        <a{%- if config.extra.footer_size %} class="{{ config.extra.footer_size }}"{% endif %} href="{{ furl | safe }}"{% if link.blank %} target="_blank"{% endif %}>{{ link.name | safe }}</a>
+        {%- endfor %}
+      </nav>
+      {%- endif %}
+    </div>
+  </footer>
+{%- endblock footer %}
+</div>
+</body>
+</html>

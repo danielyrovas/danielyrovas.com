@@ -1,0 +1,40 @@
+// Gradient system
+// Credit Alvaro https://medium.com/@alvaro.saburido/applying-gradient-trends-in-sass-cf825d70f5fe
+$gradients: () !default;
+$gradients: map-merge((
+    chill: linear-gradient(135deg, #09e485 0%,#0291e3 100%),
+    warm: linear-gradient(135deg, #F2CD48 0%,#FD803F 100%),
+    hot: linear-gradient(135deg, #F9445A 0%,#FD803F 100%),
+    cold: linear-gradient(135deg, #8019C6 0%,#2F93CC 100%),
+    dark: linear-gradient(180deg, #434343 0%, black 100%),
+    sublime: linear-gradient(to right, #fc5c7d, #6a82fb),
+    relax: linear-gradient(to right, #fffbd5, #b20a2c),
+    sandy: linear-gradient(to right, #DECBA4, #3E5151),
+), $gradients);
+
+// Gradient backgrounds
+@mixin bg-gradient($parent, $gradient) {
+  #{$parent} {
+    background: $gradient;
+  }
+}
+
+// Gradient text
+@mixin text-gradient($parent, $gradient) {
+  #{$parent} {
+    background-image: $gradient;
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+// Gradient Classes 
+@each $gradient, $value in $gradients {
+  @include bg-gradient(".bg-gradient-#{$gradient}", $value);
+}
+
+// Gradient Classes 
+@each $gradient, $value in $gradients {
+  @include text-gradient(".text-gradient-#{$gradient}", $value);
+}

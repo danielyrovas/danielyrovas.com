@@ -1,0 +1,31 @@
+{%- extends "base.html" %}
+
+{%- block seo %}
+  {{- super() }}
+  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
+{%- endblock seo %}
+
+{%- block content %}
+  {{ section.content | safe }}
+
+  <div>
+  {%- for page in section.pages %}
+    <article>
+      <h2>{{page.title}}</h2>
+        <div class="summary">
+        <p>
+        {%- if page.summary %}
+          {{ page.summary | markdown(inline=true) | safe }}
+        {%- elif page.description %}
+          {{ page.description | safe }}
+        {%- elif page.content %}
+          {{ page.content | striptags | truncate(length=150) | safe }}
+        {%- elif page.extra.static_thumbnail %}
+        {%- endif %}
+          <a href="{{ page.permalink | safe }}">...more</a>
+        </div>
+    </article>
+  {%- endfor %}
+  </div>
+
+{%- endblock content %}

@@ -1,0 +1,32 @@
+{%- extends "base.html" %}
+
+{%- block seo %}
+  {{- super() }}
+  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
+{%- endblock seo %}
+
+{%- block content %}
+  <h1>{{ section.title | safe }}</h1>
+  {{ section.content | safe }}
+
+    {%- if paginator %}
+      {%- set pages = paginator.pages -%}
+    {%- else %}
+      {%- set pages = section.pages -%}
+    {%- endif %}
+
+    {%- for page in pages %}
+      <article>
+        <h2>{{page.title}}</h2>
+        {%- if page.date %}
+        <p>{{ page.date | date(format="%_d %b, %Y") }}</p>
+        {%- endif %}
+        <div>{{page.content | safe}}</div>
+      </article>
+    {%- endfor %}
+    {%- if paginator %}
+      {{- macros::pagination(paginator=paginator, config=config) }}
+    {%- endif %}
+
+{%- endblock content %}
+

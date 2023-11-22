@@ -1,0 +1,81 @@
+{%- extends "base.html" %}
+
+{%- block seo %}
+  {{- super() }}
+  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
+{%- endblock seo %}
+
+{%- block header %}
+<a href="/">
+<h1>{{ config.title }}</h1>
+<hr class="underline">
+</a>
+<!-- <div></div> -->
+{%- endblock header %}
+{%- block content %}
+<div class="fade">
+  {{ section.content | safe }}
+</div>
+  <header>
+  <nav>
+    <span>
+    {% for link in config.extra.nav %}
+      <a href="{{ link.path }}">{{ link.name }}</a>
+    {% endfor %}
+    </span>
+  </nav>
+  </header>
+{#
+  {% set_global notes = [] %}
+  {%- for sect in section.subsections %}
+    {%- set sub = get_section(path=sect) %}
+    {%- if sub.extra.note  %}
+    {% set_global notes = notes | concat(with=sub.pages) %}
+    {%- endif %}
+  {%- endfor %}
+  {%- for note in notes | sort(attribute="date") | reverse | slice(end=config.extra.home_posts_number) %}
+      {{- macros::post_preview(post=note) }}
+  {%- endfor %}
+
+  {%- for post in section.pages | sort(attribute="date") | reverse | slice(end=config.extra.home_posts_number) %}
+      {{- macros::post_preview(post=post) }}
+  {%- endfor %}
+
+  #}
+  {#
+  <!-- <h2>Recent Notes</h2> -->
+  <div class="column-2">
+  {% set_global notes = [] %}
+  {%- for sect in section.subsections %}
+    {%- set sub = get_section(path=sect) %}
+    {%- if sub.extra.note  %}
+    {% set_global notes = notes | concat(with=sub.pages) %}
+    {%- endif %}
+  {%- endfor %}
+  {%- for note in notes
+  | sort(attribute="year") | reverse
+  %}
+  {%- if loop.index <= config.extra.home_notes_number %}
+  <article class="card full-wh">
+    <a href="{{ note.permalink }}">
+      <h3>{{ note.title | safe }}</h3>
+      <p>{{ note.date }}</p>
+    </a>
+  </article>
+  {%- endif %}
+  {%- endfor %}
+  </div>
+
+  <!-- <h2>Recent Posts</h2> -->
+
+  {%- for page in section.pages | sort(attribute="year") | reverse  %}
+  {%- if loop.index <= config.extra.home_posts_number %}
+
+  <article><a href="{{ page.permalink }}">{{ page.title | safe }}</a><p>{{ page.date }}</p></article>
+
+  {%- endif %}
+  {%- endfor %}
+  #}
+
+{%- endblock content %}
+
