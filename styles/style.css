@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-background-1;
+    @apply text-text-1;
+    @apply font-sans;
+  }
+  .markdown-content h1 {
+    @apply text-4xl;
+  }
+  .markdown-content hr {
+    @apply bg-gradient-vain border-0 h-1 rounded my-1;
+  }
+  .markdown-content h2 { @apply text-3xl; }
+  .markdown-content h3 { @apply text-2xl; }
+  .markdown-content h4 { @apply text-xl; }
+  .markdown-content h5 { @apply text-xl; }
+  .markdown-content h6 { @apply text-xl; }
+  .markdown-content * { @apply text-lg; }
+  .markdown-content a { @apply url; }
+  .markdown-content p { @apply mb-4 /* font-serif */; }
+    /* focus:outline-none focus:bg-background-2; */
+  /* } */
+}
+
+@layer utilities {
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .url {
+    @apply text-primary-1 hover:text-primary-2 hover:underline;
+    @apply focus:text-primary-2 focus:underline;
+  }
+  .url-active {
+    @apply text-primary-2 underline;
+  }
+  .bg-gradient-vain {
+    @apply bg-gradient-to-r from-[#4fd1c5] via-[#667eea] to-[#d53f8c];
+  }
+  .text-gradient-vain {
+    @apply text-gradient;
+    @apply bg-gradient-vain;
+  }
+  .w-main {
+    @apply w-full md:w-[768px];
+  }
+}

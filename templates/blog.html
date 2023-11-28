@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+  {{- super() }}
+  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
+{%- endblock seo %}
+
+{%- block content %}
+<div>
+  {{- section.content | safe }}
+
+  {%- for post in paginator.pages %}
+      {{- macros::post_preview(post=post) }}
+  {%- endfor %}
+  {%- if paginator %}
+    {{- macros::pagination(paginator=paginator, config=config) }}
+  {%- endif %}
+
+  {#
+  {%- for year, posts in paginator.pages | sort(attribute="year") | reverse | group_by(attribute="year") %}
+    <h2>{{ year }}</h2>
+    {%- for post in posts %}
+      <article><a href="{{ post.permalink }}">{{ post.title | safe }}</a>
+      <time datetime="{{ post.date }}">{{ post.date | date(format="%F") }}</time>
+      <p>{{ post.date }}</p>
+      <div>{{ post.content | safe }}</div>
+    {%- endfor %}
+  {%- endfor %}
+  #}
+
+</div>
+{%- endblock content %}
+

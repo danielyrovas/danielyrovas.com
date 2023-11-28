@@ -25,14 +25,8 @@ foothr = false
 copyright = false
 
 nav = [
-  { name = "Home", path = "/" },
   { name = "Writing", path = "/posts/" },
   { name = "Notes", path = "/notes/" },
-  # { name = "Interests", path = "/interests" },
-  # { name = "Projects", path = "/projects/" },
-  # { name = "Contact", path = "/contact/" },
-  # { name = "Resume", path = "/resume" },
-  # { name = "CV", path = "/cv" },
 ]
 
 # footer = [

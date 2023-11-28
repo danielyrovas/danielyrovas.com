@@ -5,26 +5,10 @@
   {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
 {%- endblock seo %}
 
-{%- block header %}
-<a href="/">
-<h1>{{ config.title }}</h1>
-<hr class="underline">
-</a>
-<!-- <div></div> -->
-{%- endblock header %}
 {%- block content %}
-<div class="fade">
+<div class="markdown-content">
   {{ section.content | safe }}
 </div>
-  <header>
-  <nav>
-    <span>
-    {% for link in config.extra.nav %}
-      <a href="{{ link.path }}">{{ link.name }}</a>
-    {% endfor %}
-    </span>
-  </nav>
-  </header>
 {#
   {% set_global notes = [] %}
   {%- for sect in section.subsections %}

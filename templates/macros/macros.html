@@ -1,40 +1,35 @@
 {%- macro post_preview(post) %}
-<article>
-    <span class="flex"><h3 class=""><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
-    <time>{{ post.date | date(format="%b %Y") }}</time>
+<article class="mb-16">
+    <span class="flex flex-row justify-between space-x-8">
+      <h2 class="text-3xl hover:text-primary-2"><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+      <span class="shrink-0 flex flex-col justify-end"><time class="text-secondary-1 text-end">{{ post.date | date(format="%b %Y") }}</time></span>
     </span>
-    <hr class="underline" />
-    <div class="preview mb">
+    <hr class="h-1 mb-8 mt-1 rounded border-0 bg-gradient-vain" />
+    <div class="preview markdown-content">
       {%- if post.summary -%}
         {{ post.summary | safe }}
         {# {%- elif post.description %} {{ post.description }} #}
       {%- else %}
-        {{ post.content | striptags | truncate(length=300, end="") | safe }}
+      <p>{{ post.content | striptags | truncate(length=300, end="") | safe }}...</p>
       {%- endif %}
       {#<span class="w-full"><a href="{{ post.permalink }}#continue-reading">Continue...</a></span>#}
-      <span class="w-full"><a href="{{ post.permalink }}">Continue...</a></span>
+      <span class="w-full flex justify-end"><a href="{{ post.permalink }}">Continue...</a></span>
     </div>
+    <!-- TODO: add tags -->
 </article>
 {% endmacro post_preview %}
+{%- macro note_display(note) %}
 
-{%- macro page_title(page) %}
-<h1><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
-{%- endmacro page_title %}
-
-{%- macro page_meta(page) %}
-  <span class="page-meta">
-    {%- if page.date %}
-      Published {{ page.date | date(format="%_d %b, %Y") }} 
-      {%- if page.updated %}, updated {{ page.updated | date(format="%_d %b, %Y") }}{% endif %}.
-    {% endif %}
-  </span>
-{%- endmacro page_meta %}
-
-{%- macro page_footer(page) %}
-<span>
-    {%- if page.taxonomies.tags %} Tags: {%- for tag in page.taxonomies.tags %} <a href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">{{ tag }}</a> {% endfor -%}{%- endif %}
-</span>
-{%- endmacro page_footer %}
+<article class="mb-16">
+    <span class="flex flex-row justify-between space-x-8">
+      <h2 class="text-3xl hover:text-primary-2"><a href="{{ note.permalink }}">{{ note.title }}</a></h2>
+      <span class="shrink-0 flex flex-col justify-end"><time class="text-secondary-1 text-end">{{ note.date | date(format="%b %Y") }}</time></span>
+    </span>
+    <hr class="h-1 mb-8 mt-1 rounded border-0 bg-gradient-vain" />
+    <div class="markdown-content">{{ note.content | safe }}</div>
+    <!-- TODO: add tags -->
+</article>
+{% endmacro note_display %}
 
 {%- macro pagination(paginator, config)%}
 {%- if paginator.number_pagers > 1 %}
@@ -65,13 +60,13 @@
                   {%- set end = paginator.number_pagers %}
               {%- endif %}
           {%- endif %}
-    <nav>
+    <nav class="flex flex-row justify-center items-center space-x-4">
       {%- set icon_first=config.extra.icon_first | default(value="svgs svgh angll") -%}
       {%- set icon_prev=config.extra.icon_prev | default(value="svgs svgh angl") -%}
       {%- set icon_next=config.extra.icon_next | default(value="svgs svgh angr") -%}
       {%- set icon_last=config.extra.icon_last | default(value="svgs svgh angrr") -%}
       {%- if paginator.previous -%}
-        <a class="on outp" href="{{ paginator.first | safe }}{%- if uglyurls %}index.html{%- endif %}" title="First Page">
+        <a class="on outp" href="{{ paginator.first | safe }}" title="First Page">
         {%- if icon_first -%}<i class="{{ icon_first }}" alt="First Page"></i>
         {%- else -%}&#171;
         {%- endif -%}
@@ -85,7 +80,7 @@
       {%- endif -%}
 
       {%- if paginator.previous -%}
-        <a class="on outp" href="{{ paginator.previous | safe }}{%- if uglyurls %}index.html{%- endif %}" title="Previous Page">
+        <a class="on outp" href="{{ paginator.previous | safe }}" title="Previous Page">
         {%- if icon_prev -%}<i class="{{ icon_prev }}" alt="Previous Page"></i>
         {%- else -%}&#8249;
         {%- endif -%}
@@ -100,16 +95,16 @@
 
       {%- for i in range(start=start, end=end+1) -%}
           {%- if i == paginator.current_index -%}
-          <a class="inp on cnav" href="#">{{i}}</a>
+          <a class="url-active text-2xl" href="#">{{i}}</a>
           {%- elif i > 1 -%}
-          <a class="inp on" href="{{ paginator.base_url | safe }}{{ i ~ '/' }}{%- if uglyurls %}index.html{%- endif %}">{{i}}</a>
+          <a class="url text-2xl" href="{{ paginator.base_url | safe }}{{ i ~ '/' }}">{{i}}</a>
           {%- else -%}
-          <a class="inp on" href="{{ paginator.first | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ i }}</a>
+          <a class="url text-2xl" href="{{ paginator.first | safe }}">{{ i }}</a>
           {%- endif -%}
       {%- endfor -%}
 
       {%- if paginator.next -%}
-        <a class="on outp" href="{{ paginator.next | safe }}{%- if uglyurls %}index.html{%- endif %}" title="Next Page">
+        <a class="underline text-primary-2" href="{{ paginator.next | safe }}" title="Next Page">
         {%- if icon_next -%}<i class="{{ icon_next }}" alt="Next Page"></i>
         {%- else -%}&#8250;
         {%- endif -%}
@@ -123,7 +118,7 @@
       {%- endif -%}
 
       {%- if paginator.next -%}
-        <a class="on outp" href="{{ paginator.last | safe }}{%- if uglyurls %}index.html{%- endif %}" title="Last Page">
+        <a class="underline text-primary-2" href="{{ paginator.last | safe }}" title="Last Page">
         {%- if icon_last -%}<i class="{{ icon_last }}" alt="Last Page"></i>
         {%- else -%}&#187;
         {%- endif -%}
@@ -137,4 +132,4 @@
       {%- endif -%}
     </nav>
 {%- endif %}
-{%- endmacro %}
+{%- endmacro pagination %}

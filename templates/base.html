@@ -28,6 +28,10 @@
       {%- endif %}
     {%- endif %}
 
+    {%- if page.extra.title_addition %}
+      {%- set title_addition = title_separator ~ page.extra.title_addition %}
+    {%- endif %}
+
     {%- if page.description %}
       {%- set description = page.description %}
     {%- elif section.description %}
@@ -38,31 +42,88 @@
   {%- endblock seo %}
 
   {%- include "partials/head_js.html" %}
+  <style>
+    @keyframes fade-in { from { opacity: 0; } }
+    @keyframes fade-out { to { opacity: 0; } }
+    @keyframes slide-up {
+      0% { transform:translateY(0); }
+      50% { transform:translateY(-100%); }
+      100% { transform:translateY(-100%); }
+    }
+    @keyframes bounce-down {
+      from, to { transform: scale(1, 1); }
+      0% { transform:translateY(-100%); }
+      40% { transform:translateY(-100%); }
+      60% { transform:translateY(5%); }
+      60% { transform: scale(1.005, 0.995); }
+      70% { transform:translateY(-5%); }
+      70% { transform: scale(0.995, 1.005); }
+      80% { transform:translateY(1%); }
+      80% { transform: scale(1.002, 0.998); }
+      90% { transform:translateY(-1%); }
+      90% { transform: scale(0.998, 1.002); }
+      100% { transform:translateY(0); }
+    }
+    ::view-transition-old(bounce) {
+    animation: slide-up 700ms ease;
+    }
+    ::view-transition-new(bounce) {
+    animation: bounce-down 700ms ease;
+    }
+    .bounce {
+    view-transition-name: bounce;
+    }
+  </style>
 </head>
-<body hx-boost="true">
-  <div id="site-wrapper">
-  <header>
-
+<body hx-boost="true" class="flex flex-col items-center"
+  hx-swap="outerHTML transition:true"
+  >
+  <!-- hx-target="#main" hx-select="#main" -->
   {%- block header %}
-    <a href="/">
-    <h1 class="underlined">
-      {{ config.title }}
-      <div class="underline"></div>
-    </h1>
+  <header class="w-main p-8 bounce">
+  {%- if current_path and current_path == "/" %}
+  <div class="py-4 sm:py-8"></div>
+  {%- endif %}
+  <span class="flex flex-col sm:flex-row sm:justify-between items-center">
+    <a href="/" id="site-title">
+       {%- if current_path and current_path == "/" %}
+      <h1 class="text-5xl sm:text-6xl font-semibold">{{ config.title }}</h1>
+      <div class="h-1 sm:h-1.5 -mt-1 mb-4 bg-gradient-vain"></div>
+       {% else %}
+      <h1 class="hover:text-primary-2 text-4xl sm:text-5xl font-semibold">{{ config.title }}</h1>
+      <div class="h-0.5 sm:h-1 -mt-1 mb-4 bg-gradient-vain"></div>
+       {%- endif %}
     </a>
-    {%- include "partials/nav.html" %}
-  {%- endblock header %}
+
+    <span class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
+       {%- if current_path and current_path != "/" %}
+      <a href="/" class="url"
+        >Home</a>
+         {%- endif %}
+      {% for link in config.extra.nav %}
+      <a href="{{ link.path }}"
+         {% if current_path and current_path == link.path %}
+           class="url-active"
+         {% else %}
+           class="url"
+         {% endif %}
+        >{{ link.name }}</a>
+      {% endfor %}
+    </span>
+  </span>
   </header>
-  <main>
+  {%- endblock header %}
+  <div id="main">
+  <main class="w-main p-8" id="site-main">
   {%- block content %}
   {%- endblock content %}
   </main>
-{%- block footer %}
-  <footer>
-    {%- if config.extra.foothr %}
+  <footer class="w-main p-8">
+  {%- block footer %}
+  {#{%- if config.extra.foothr %}
     <hr />
     {%- endif %}
-    <div class="c">
+    <div class="">
       {%- if config.extra.copyright -%}
       {%- set current_year = now() | date(format="%Y") %}
       {%- set current_year = '<span id="year">' ~ current_year ~ '</span>' %}
@@ -79,8 +140,9 @@
       </nav>
       {%- endif %}
     </div>
+  #}
+  {%- endblock footer %}
   </footer>
-{%- endblock footer %}
 </div>
 </body>
 </html>
