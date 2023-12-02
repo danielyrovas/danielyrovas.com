@@ -1,0 +1,10 @@
+{%- macro page_title(page) %}
+<h1><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
+{%- endmacro page_title %}
+
+
+{%- macro page_footer(page) %}
+<span>
+    {%- if page.taxonomies.tags %} Tags: {%- for tag in page.taxonomies.tags %} <a href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">{{ tag }}</a> {% endfor -%}{%- endif %}
+</span>
+{%- endmacro page_footer %}

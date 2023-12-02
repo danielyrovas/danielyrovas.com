@@ -80,11 +80,14 @@
   >
   <!-- hx-target="#main" hx-select="#main" -->
   {%- block header %}
+  {{- macros::nav(config=config, title=config.title) }}
+
+  {#
   <header class="w-main p-8 bounce">
   {%- if current_path and current_path == "/" %}
   <div class="py-4 sm:py-8"></div>
   {%- endif %}
-  <span class="flex flex-col sm:flex-row sm:justify-between items-center">
+  <div class="flex flex-col sm:flex-row sm:justify-between items-center">
     <a href="/" id="site-title">
        {%- if current_path and current_path == "/" %}
       <h1 class="text-5xl sm:text-6xl font-semibold">{{ config.title }}</h1>
@@ -95,7 +98,7 @@
        {%- endif %}
     </a>
 
-    <span class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
+    <div class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
        {%- if current_path and current_path != "/" %}
       <a href="/" class="url"
         >Home</a>
@@ -109,12 +112,14 @@
          {% endif %}
         >{{ link.name }}</a>
       {% endfor %}
-    </span>
-  </span>
+    </div>
+  </div>
   </header>
+  #}
   {%- endblock header %}
   <div id="main">
   <main class="w-main p-8" id="site-main">
+
   {%- block content %}
   {%- endblock content %}
   </main>

@@ -1,6 +1,7 @@
 +++
 title = "Obligatory “I made a blog” post"
 date = "2023-11-17"
+draft = true
 [taxonomies]
 tags = [ "beginner", "webdev" ]
 +++

@@ -1,3 +1,74 @@
+{%- macro nav( config, title, style="nav-right", extra_space=false ) %}
+
+  <header class="w-main p-8 bounce">
+
+  {%- if extra_space %}
+  <div class="py-6 sm:py-12"></div>
+  {%- endif %}
+
+  {%- if style == "centre" %}
+
+  <div class="flex flex-col items-center">
+    <a href="/" id="site-title">
+      <h1 class="text-5xl xs:text-6xl sm:text-7xl font-semibold">{{ title }}</h1>
+        <div class="h-1 sm:h-1.5 -mt-1 mb-4 bg-gradient-vain"></div>
+    </a>
+  </div>
+
+  {%- elif style == "nav-right" %}
+
+  <div class="flex flex-col items-center">
+    <a href="/" id="site-title">
+      <h1 class="text-5xl xs:text-6xl sm:text-7xl font-semibold">{{ title }}</h1>
+        <div class="h-1 sm:h-1.5 -mt-1 mb-4 bg-gradient-vain"></div>
+    </a>
+    <div class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
+      {% for link in config.extra.nav %}
+      <a href="{{ link.path }}"
+         {% if current_path and current_path == link.path %}
+           class="url-active"
+         {% else %}
+           class="url"
+         {% endif %}
+        >{{ link.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {%- endif %}
+
+  {#
+  <div class="flex flex-col sm:flex-row sm:justify-between items-center">
+    <a href="/" id="site-title">
+        <div class="h-1 sm:h-1.5 -mt-1 mb-4 bg-gradient-vain"></div>
+      {% else %}
+        <h1 class="hover:text-primary-2 text-4xl sm:text-5xl font-semibold">{{ config.title }}</h1>
+        <div class="h-0.5 sm:h-1 -mt-1 mb-4 bg-gradient-vain"></div>
+      {%- endif %}
+    </a>
+
+    <div class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
+       {%- if path and path != "/" %}
+      <a href="/" class="url"
+        >Home</a>
+         {%- endif %}
+      {% for link in config.extra.nav %}
+      <a href="{{ link.path }}"
+         {% if current_path and current_path == link.path %}
+           class="url-active"
+         {% else %}
+           class="url"
+         {% endif %}
+        >{{ link.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  #}
+  </header>
+
+{%- endmacro nav %}
+
 {%- macro post_preview(post) %}
 <article class="mb-16">
     <span class="flex flex-row justify-between space-x-8">

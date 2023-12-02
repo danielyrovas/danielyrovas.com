@@ -5,13 +5,14 @@ template = "resume.html"
 date = "2022-11-08"
 updated = "2023-11-15"
 aliases = [ "cv" ]
+draft = true
 [taxonomies]
 tags = ["Resume","CV","Experience","Qualifications"]
 [extra]
 career = "Software Developer"
 title_addition = "Daniel Savory"
 nav = [
-  { name = "Projects", path = "/showcase/" },
+  # { name = "Projects", path = "/showcase/" },
   { name = "Résumé", path = "/resume/" },
 ]
 # info = [
