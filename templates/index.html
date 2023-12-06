@@ -5,11 +5,9 @@
   {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
 {%- endblock seo %}
 
-
-{%- block header %}
-  {{- macros::nav(config=config, title=config.title, extra_space=true
-  ) }}
-{%- endblock header %}
+{%- block header_macro %}
+  {{- macros::nav(config=config, title=config.title, menu=nav, style="nav-centre", extra_space=true) }}
+{%- endblock header_macro %}
 
 {%- block content %}
 <div class="markdown-content">

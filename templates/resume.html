@@ -2,37 +2,16 @@
 
 {%- block seo %}
   {{- super() }}
-
   {%- set created_time = page.date %}
   {%- set updated_time = page.updated %}
-
   {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, type="article", is_page=true, created_time=created_time, updated_time=updated_time) }}
 {%- endblock seo %}
 
 {%- block header %}
-  <header class="bg-background-1 {#sm:sticky sm:top-0#} w-main bounce p-4">
-  {#
-  <style>
-  @keyframes grow-progress {
-    from { transform: scaleX(1); }
-    to { transform: scaleX(0); }
-  }
+  <header class="w-main bounce p-8 {#sticky top-0#} bg-background-1">
+  <div class="flex flex-col items-center">
 
-  #progress {
-    transform-origin: 50% 0;
-    animation: grow-progress auto linear;
-    animation-timeline: scroll();
-  }
-  </style>
-  #}
-  <span class="flex flex-col sm:flex-row sm:justify-between items-center mb-6">
-    <a href="/resume/" id="site-title">
-      <h1 class="text-4xl sm:text-5xl font-semibold">{{ config.extra.author }}</h1>
-      <div id="progress" class="h-0.5 sm:h-1 -mt-0.5 mb-4 bg-gradient-vain rounded"></div>
-      <h2 class="-mt-4 text-xl sm:text-2xl font-serif italic tracking-widest text-center">{{ page.extra.career }}</h2>
-    </a>
-
-    <span class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
+    <div class="text-2xl flex flex-row justify-between w-full" id="site-nav">
     {% for link in page.extra.nav %}
     <a href="{{ link.path }}"
        {%- if current_path and current_path == link.path %}
@@ -42,25 +21,68 @@
        {%- endif %}
       >{{ link.name }}</a>
     {% endfor %}
-    </span>
-  </span>
-  <span class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:max-w-xl mx-auto items-center">
+    </div>
+
+    <a href="/resume/" id="site-title" class="my-4">
+      <h1 class="text-5xl font-semibold text-center">{{ config.extra.author }}</h1>
+      <div id="progress" class="h-1 mt-2 mb-4 bg-gradient-vain rounded"></div>
+      <h2 class="-mt-3 text-2xl font-serif italic tracking-widest text-center">{{ page.extra.career }}</h2>
+    </a>
+  </div>
+
+  </header>
+  <header class="w-main px-8 mb-4 pb-4">
+  <div class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:justify-between items-center text-lg">
     {% for link in page.extra.info %}
     <a {% if link.new_tab %}target="_blank"{% endif %} href="{{ link.href }}" class="flex flex-row items-center justify-center space-x-4 hover:underline">
-      <span class="text-primary-2"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path class="fill-current" d="{{ link.svg | safe }}"/></svg>
-      </span>
-      <span>{{ link.text }}</span>
+      <div class="text-primary-2"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path class="fill-current" d="{{ link.svg | safe }}"/></svg>
+      </div>
+      <div>{{ link.text }}</div>
     </a>
     {% endfor %}
-  </span>
+  </div>
   </header>
 {%- endblock header %}
+{%- block header_macro %}
+{%- endblock header_macro %}
 {%- block content %}
 {#{% for info in page.extra.info %}
     <a href="{{ info.link }}">{{ info.text }}</a>
     {% endfor %}#}
 
 <div class="markdown-content">
+
+      <ul class="">
+         <li>You might feel like you are being really "organized" o</li>
+         <li>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</li>
+         <li>Nesting tons of folders in your source code is also not helpful.</li>
+      </ul>
+<ol class="">
+   <li>
+      List item one
+      <ul class="">
+         <li>You might feel like you are being really "organized" o</li>
+         <li>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</li>
+         <li>Nesting tons of folders in your source code is also not helpful.</li>
+      </ul>
+   </li>
+   <li>
+      List item two
+      <ul class="">
+         <li>I'm not sure if we'll bother styling more than two levels deep.</li>
+         <li>Two is already too much, three is guaranteed to be a bad idea.</li>
+         <li>If you nest four levels deep you belong in prison.</li>
+      </ul>
+   </li>
+   <li>
+      List item three
+      <ul class="">
+         <li>Again please don't nest lists if you want</li>
+         <li>Nobody wants to look at this.</li>
+         <li>I'm upset that we even have to bother styling this.</li>
+      </ul>
+   </li>
+</ol>
   {{ page.content | safe }}
 </div>
 

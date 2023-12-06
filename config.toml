@@ -25,6 +25,7 @@ foothr = false
 copyright = false
 
 nav = [
+  { name = "Home", path = "/" },
   { name = "Writing", path = "/posts/" },
   { name = "Notes", path = "/notes/" },
 ]

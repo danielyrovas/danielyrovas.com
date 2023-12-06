@@ -1,6 +1,11 @@
 +++
 # title = "Daniel's website"
 # paginate_by = 2
+[extra]
+nav = [
+  { name = "Writing", path = "/posts/" },
+  { name = "Notes", path = "/notes/" },
+]
 +++
 
 I'm Daniel, a software developer working on Android applications and open

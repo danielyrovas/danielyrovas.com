@@ -42,46 +42,23 @@
   {%- endblock seo %}
 
   {%- include "partials/head_js.html" %}
-  <style>
-    @keyframes fade-in { from { opacity: 0; } }
-    @keyframes fade-out { to { opacity: 0; } }
-    @keyframes slide-up {
-      0% { transform:translateY(0); }
-      50% { transform:translateY(-100%); }
-      100% { transform:translateY(-100%); }
-    }
-    @keyframes bounce-down {
-      from, to { transform: scale(1, 1); }
-      0% { transform:translateY(-100%); }
-      40% { transform:translateY(-100%); }
-      60% { transform:translateY(5%); }
-      60% { transform: scale(1.005, 0.995); }
-      70% { transform:translateY(-5%); }
-      70% { transform: scale(0.995, 1.005); }
-      80% { transform:translateY(1%); }
-      80% { transform: scale(1.002, 0.998); }
-      90% { transform:translateY(-1%); }
-      90% { transform: scale(0.998, 1.002); }
-      100% { transform:translateY(0); }
-    }
-    ::view-transition-old(bounce) {
-    animation: slide-up 700ms ease;
-    }
-    ::view-transition-new(bounce) {
-    animation: bounce-down 700ms ease;
-    }
-    .bounce {
-    view-transition-name: bounce;
-    }
-  </style>
 </head>
-<body hx-boost="true" class="flex flex-col items-center"
+<body class="flex flex-col items-center"
+  hx-boost="true" 
   hx-swap="outerHTML transition:true"
+  {# hx-target="#main" hx-select="#main" #}
   >
-  <!-- hx-target="#main" hx-select="#main" -->
+  
   {%- block header %}
-  {{- macros::nav(config=config, title=config.title) }}
-
+  {%- if section.extra.nav  %}
+  {% set nav = section.extra.nav %}
+  {%- else %}
+  {% set nav = config.extra.nav %}
+  {%- endif %}
+  {%- endblock header %}
+  {%- block header_macro %}
+  {{- macros::nav(config=config, title=config.title, menu=nav) }}
+  {%- endblock header_macro %}
   {#
   <header class="w-main p-8 bounce">
   {%- if current_path and current_path == "/" %}
@@ -116,7 +93,6 @@
   </div>
   </header>
   #}
-  {%- endblock header %}
   <div id="main">
   <main class="w-main p-8" id="site-main">
 

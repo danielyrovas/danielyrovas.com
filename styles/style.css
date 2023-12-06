@@ -22,8 +22,63 @@
   .markdown-content * { @apply text-lg; }
   .markdown-content a { @apply url; }
   .markdown-content p { @apply mb-4 /* font-serif */; }
+  .markdown-content ol { 
+    @apply list-decimal list-inside space-y-1 mb-4;
+  }
+  .markdown-content ul ol, .markdown-content ol ol, .markdown-content ul ul, .markdown-content ol ul {
+    @apply ps-4;
+  }
+  .markdown-content ul li::marker {
+    @apply text-gradient-vain;
+  }
+  .markdown-content ul {
+    @apply list-disc list-inside space-y-1 mb-4;
+    /* space-y-4 text-gray-500 list-decimal list-inside dark:text-gray-400 */
+  }
+  .markdown-content img {
+    /* Add style attribute to images:
+     * background-image: url(img/img-lowres.jpg); */
+    font-style: italic;
+    background-size: cover;
+    background-repeat: no-repeat;
+    shape-margin: 1rem;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
     /* focus:outline-none focus:bg-background-2; */
   /* } */
+
+    /* @keyframes fade-in { from { opacity: 0; } } */
+    /* @keyframes fade-out { to { opacity: 0; } } */
+    /* @keyframes slide-up { */
+    /*   0% { transform:translateY(0); } */
+    /*   50% { transform:translateY(-100%); } */
+    /*   100% { transform:translateY(-100%); } */
+    /* } */
+    /* @keyframes bounce-down { */
+    /*   from, to { transform: scale(1, 1); } */
+    /*   0% { transform:translateY(-100%); } */
+    /*   40% { transform:translateY(-100%); } */
+    /*   60% { transform:translateY(5%); } */
+    /*   60% { transform: scale(1.010, 0.990); } */
+    /*   70% { transform:translateY(-5%); } */
+    /*   70% { transform: scale(0.990, 1.010); } */
+    /*   80% { transform:translateY(1%); } */
+    /*   80% { transform: scale(1.003, 0.997); } */
+    /*   90% { transform:translateY(-1%); } */
+    /*   90% { transform: scale(0.997, 1.003); } */
+    /*   100% { transform:translateY(0); } */
+    /* } */
+    /* ::view-transition-old(bounce) { */
+    /* animation: slide-up 700ms ease; */
+    /* } */
+    /* ::view-transition-new(bounce) { */
+    /* animation: bounce-down 700ms ease; */
+    /* } */
+    /* .bounce { */
+    /* view-transition-name: bounce; */
+    /* } */
 }
 
 @layer utilities {

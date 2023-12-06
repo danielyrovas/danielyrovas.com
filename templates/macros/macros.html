@@ -1,29 +1,31 @@
-{%- macro nav( config, title, style="nav-right", extra_space=false ) %}
+{%- macro nav( config, title, style="nav-right", menu, extra_space=false ) %}
 
-  <header class="w-main p-8 bounce">
+  <header class="w-main p-8 bounce" id="site-header" style="view-transition-name: smooth;">
 
   {%- if extra_space %}
   <div class="py-6 sm:py-12"></div>
   {%- endif %}
 
-  {%- if style == "centre" %}
+  {%- if style == "nav-right" %}
+  <div class="flex flex-col sm:flex-row sm:justify-between items-center">
 
-  <div class="flex flex-col items-center">
     <a href="/" id="site-title">
-      <h1 class="text-5xl xs:text-6xl sm:text-7xl font-semibold">{{ title }}</h1>
-        <div class="h-1 sm:h-1.5 -mt-1 mb-4 bg-gradient-vain"></div>
+      <h1 class="text-4xl sm:text-5xl font-semibold">{{ title }}</h1>
+        <div class="h-1 sm:h-1 -mt-1 mb-4 bg-gradient-vain"></div>
     </a>
-  </div>
+    <div class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
 
-  {%- elif style == "nav-right" %}
-
+  {%- elif style == "nav-centre" %}
   <div class="flex flex-col items-center">
+
     <a href="/" id="site-title">
       <h1 class="text-5xl xs:text-6xl sm:text-7xl font-semibold">{{ title }}</h1>
         <div class="h-1 sm:h-1.5 -mt-1 mb-4 bg-gradient-vain"></div>
     </a>
     <div class="text-xl sm:text-2xl flex flex-row space-x-8" id="site-nav">
-      {% for link in config.extra.nav %}
+  {%- endif %}
+
+      {% for link in menu %}
       <a href="{{ link.path }}"
          {% if current_path and current_path == link.path %}
            class="url-active"
@@ -34,8 +36,6 @@
       {% endfor %}
     </div>
   </div>
-
-  {%- endif %}
 
   {#
   <div class="flex flex-col sm:flex-row sm:justify-between items-center">
