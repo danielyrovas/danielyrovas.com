@@ -1,4 +1,4 @@
-base_url = "https://danielyrovas.com"
+base_url = "https://www.danielyrovas.com"
 title = "danielyrovas"
 
 compile_sass = false
@@ -26,7 +26,7 @@ copyright = false
 
 nav = [
   { name = "Home", path = "/" },
-  { name = "Writing", path = "/posts/" },
+  # { name = "Writing", path = "/posts/" },
   { name = "Notes", path = "/notes/" },
 ]
 

@@ -12,8 +12,8 @@ tags = ["Resume","CV","Experience","Qualifications"]
 career = "Software Developer"
 title_addition = "Daniel Savory"
 nav = [
-  { name = "Projects", path = "/showcase/" },
-  { name = "Résumé", path = "/resume/" },
+  # { name = "Résumé", path = "/resume/" },
+  # { name = "Projects", path = "/showcase/" },
 ]
 # info = [
 #   { name = "Phone", icon = "", text = "0421282998", link = "tel:0421282998" },
@@ -41,14 +41,24 @@ info = [
 ### Seek Group - Jora
 Sep 2022 - present
 
-- Developed Python and Ruby scripts to parse web pages and extract relevant data.
-- Developed analytics tools and dashboards.
-- Documented processes and workflows using Confluence.
-- Analysed systems and processes for tasks that can be automated.
-- Automated data ingestion and discovery with Python, JavaScript and Puppeteer.
-- Maintained and repaired crawler configurations.
-- Collaborated with the team at Jora remotely and in the office.
-- Technologies leveraged: Python, JavaScript, Ruby, XPath, HTML, CSS, JSON, XML, SQL and Web APIs.
+- Develop Python and Ruby scripts to parse web pages and extract relevant data.
+- Develop analytics tools and dashboards.
+- Document processes and workflows using Confluence.
+- Analyse systems and processes for tasks that can be automated.
+- Automate data ingestion and discovery with Python, JavaScript and Puppeteer.
+- Maintain and repaired crawler configurations.
+- Collaborate with the team at Jora remotely and in the office.
+- Technologies:
+    - Python
+    - JavaScript
+    - Ruby
+    - XPath
+    - HTML
+    - CSS
+    - JSON
+    - XML
+    - SQL
+    - Web APIs
 
 ## Android and backend developer
 ### Unified Solutions
@@ -58,15 +68,24 @@ Apr 2022 – Jun 2022
 - Designed and developed a REST API backend to facilitate communication from the Android app to a MySQL database.
 - Deployed API to server and integrated it with existing database.
 - Implemented ability to perform CRUD (database) operations using the app.
-- Technologies Utilised: Kotlin, Java, Rust, SQL and Git.
+- Technologies:
+    * Kotlin
+    * Java
+    * Rust
+    * SQL
+    * Git
 
 # Education
 
 --- 
-## Bachelor of Computer Science, _Software Development major._
-### Swinburne University of Technology
-## LinkedIn Certificates
-- Rust Essential Training: a [Certificate](https://www.linkedin.com/learning/certificates/f7493bbb30652a2ee63cbc25a86870a3e3a783b618a21d52dd0f8c54673cfcbc?trk=share_certificate) covering the Rust programming language
+
+1. ## Bachelor of Computer Science
+    1. Swinburne University of Technology
+    2. _Software Development major_
+
+<!-- ### Bachelor of Computer Science, *Software Development major.* @ Swinburne University of Technology -->
+2. ## Certificates
+    1. **Rust Essential Training**: a [LinkedIn Certificate](https://www.linkedin.com/learning/certificates/f7493bbb30652a2ee63cbc25a86870a3e3a783b618a21d52dd0f8c54673cfcbc?trk=share_certificate) covering the Rust programming language
 
 # Projects
 ---
@@ -74,74 +93,11 @@ Apr 2022 – Jun 2022
 Utilised AgolaCD to enable Infrastructure-as-Code deployments of personal services to
 several self-hosted Kubernetes clusters via a Git repository. Includes a CI pipeline
 for automated building of personal development projects.
-### LinkLater - an Android App for saving bookmarks
+
+### LinkLater - _an Android App for saving bookmarks_
 Currently developing an Android application that can accept a link that is shared to it and contact
 a third party API (LinkDing) to store it. Includes storing login information and user preferences.
 ### Game development project
 Developed a game in an Object Oriented Programming style using the .Net framework.
 The project focussed on extensibility and Test Driven Development.
-## Technologies
-### Proficient
-  <table>
-    <tr>
-      <td>Rust</td>
-      <td>Kotlin</td>
-      <td>Java</td>
-      <td>Kubernetes</td>
-    </tr>
-    <tr>
-      <td>.Net/C#</td>
-      <td>HTML</td>
-      <td>CSS</td>
-      <td>CI/CD</td>
-    </tr>
-    <tr class="last">
-      <td>Linux</td>
-      <td>SQL</td>
-      <td>Git VCS</td>
-      <td>Bash</td>
-    </tr>
-  </table>
 
-### Familiar
-  <table>
-    <tr>
-      <td>C</td>
-      <td>C++</td>
-      <td>Python</td>
-    </tr>
-    <tr>
-      <td>Javascript</td>
-      <td>Ruby</td>
-      <td>PHP</td>
-    </tr>
-    <tr class="last">
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-
-## Skills
-
-Server Administration
-• Advanced use of Canonical LXD and Docker
-• Good understanding of Kubernetes
-• Linux and Cloud server administration
-• Microsoft Active Directory Network Admin
-
-  <table>
-    <tr>
-      <td>Programming & Debugging</td>
-      <td>Robotic Process Automation</td>
-      <td>Interface Design</td>
-    </tr>
-    <tr class="last">
-      <td>Containerisation - LXD</td>
-      <td>Responsive Webpage Design</td>
-      <td>Database Design</td>
-    </tr>
-  </table>
-
-
-<footer><p>Daniel Savory &mdash; <a href="mailto:daniel@yrovas.com">daniel@yrovas.com</a> &mdash; <a href="tel:0421282998">0421 282 998</a></p></footer>

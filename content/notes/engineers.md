@@ -3,14 +3,14 @@ title = "It's always the Engineers"
 date = "2022-01-02"
 +++
 
-Junior Engineer -
+Junior Engineer<br>
 *Creates complex solutions to simple problems*
 
-Engineer -
+Engineer<br>
 *Creates simple solutions to simple problems*
 
-Senior Engineer -
+Senior Engineer<br>
 *Creates simple solutions to complex problems*
 
-Rockstar Engineer -
+Rockstar Engineer<br>
 *Makes complex problems disappear*
