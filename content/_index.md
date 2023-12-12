@@ -3,7 +3,7 @@
 # paginate_by = 2
 [extra]
 nav = [
-  { name = "Writing", path = "/posts/" },
+  # { name = "Writing", path = "/posts/" },
   { name = "Notes", path = "/notes/" },
 ]
 +++
