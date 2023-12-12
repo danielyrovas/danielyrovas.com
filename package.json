@@ -1,7 +1,8 @@
 {
 	"scripts": {
 		"watch": "parcel watch styles/styles.css --out-dir static/styles --no-hmr --no-source-maps",
-		"tail": "pnpx tailwindcss -i ./styles/style.css -o ./static/style.css --watch"
+		"tail": "pnpx tailwindcss -i ./styles/style.css -o ./static/style.css --watch",
+		"tailbuild": "pnpx tailwindcss -i ./styles/style.css -o ./static/style.css"
 	},
 	"dependencies": {
 		"parcel": "^2.10.3",
