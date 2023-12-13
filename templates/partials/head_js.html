@@ -1,9 +1,1 @@
-{#- JAVASCRIPT #}
-{%- set integrity = config.extra.integrity -%}
-
 <script src="{{ get_url(path='js/htmx.js', trailing_slash=false, cachebust=true) | safe }}"{%- if integrity %} integrity="sha384-{{ get_hash(path='js/htmx.js', sha_type=384, base64=true) | safe }}"{%- endif %}></script>
-{%- if config.extra.js_bundle %}
-<script defer src="{{ get_url(path='js/bundle.min.js', trailing_slash=false, cachebust=true) | safe }}"{%- if integrity %} integrity="sha384-{{ get_hash(path='js/abridge_nopwa.min.js', sha_type=384, base64=true) | safe }}"{%- endif %}></script>
-{%- endif %}
-
-<noscript><link rel="stylesheet" href="{{ get_url(path='nojs.css') | safe }}" /></noscript>

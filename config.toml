@@ -19,46 +19,9 @@ notes = "{parent}/{slug}/"
 author = "Daniel Savory"
 home_notes_number = 1
 home_posts_number = 1
-stylesheets = [ "style.css" ]
-prerender_nav = false
-foothr = false
-copyright = false
 
 nav = [
   { name = "Home", path = "/" },
   # { name = "Writing", path = "/posts/" },
   { name = "Notes", path = "/notes/" },
 ]
-
-# footer = [
-#   { name = "Sitemap", path = "/sitemap.xml", blank = true },
-# ]
-integrity = false
-
-###############################################################################
-### Favicons
-###############################################################################
-
-# favicon_theme_color = "#333333"
-# favicon_ms_color = "#333333"
-# favicon_mask = "safari-pinned-tab.svg" # safari-pinned-tab.svg
-# favicon_mask_color = "#ff9900"
-favicon_svg = "favicon.svg" # favicon.svg
-# favicon180 = "apple-touch-icon.png" # apple-touch-icon.png
-favicon32 = "favicon-32x32.png" # favicon-32x32.png
-# favicon16 = "favicon-16x16.png" # favicon-16x16.png
-
-###############################################################################
-### Security Settings
-### Security Headers should preferably be set by your webserver (Nginx, Apache)
-###   https://observatory.mozilla.org  https://csp-evaluator.withgoogle.com/
-### If you are unable to load your security headers with your webserver, this will load a couple of them as meta tags.
-### There are many other security related headers most of which can only be set by the webserver method.
-### If you happen to use Netlify, you can define all the headers in your netlify.toml file:
-###   https://github.com/Jieiku/abridge/blob/master/netlify.toml
-### UnComment any of these lines to enable their meta tags.
-###############################################################################
-
-#security_header_referrer = "strict-origin-when-cross-origin"
-
-#security_header_csp = "default-src 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; connect-src 'self'; form-action 'self'; script-src 'self'; img-src 'self' data: cdn.cloudflare.com; frame-src 'self' www.youtube-nocookie.com player.vimeo.com; media-src 'self' data: cdn.cloudflare.com www.youtube-nocookie.com player.vimeo.com; font-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.gstatic.com; style-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.googleapis.com;"

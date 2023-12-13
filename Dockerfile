@@ -15,3 +15,4 @@ RUN ["zola", "build"]
 
 FROM pierrezemb/gostatic
 COPY --from=builder /app/public /srv/http/
+CMD [ "-fallback", "404.html" ]

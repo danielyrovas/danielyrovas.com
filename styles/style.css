@@ -74,6 +74,63 @@
     }
   }
 
+  .resume-content {
+    #experience {
+      ~ h4 {
+        @apply text-4xl;
+      }
+    }
+    ul > li > ul {
+      @apply flex flex-row list-none space-y-0 gap-y-4 gap-x-4 flex-wrap mt-2;
+      > li {
+        /* @apply border rounded-full py-0.5 px-4 border-[#75cec4] bg-[#225f58] text-[#75cec4]; */
+        /* @apply border rounded-full py-0.5 px-4 border-[#71add1] bg-[#204961] text-[#71add1]; */
+        @apply border rounded-full py-0.5 px-4 border-[#73bacd] bg-[#22515e] text-[#73bacd];
+      }
+    }
+
+    ol {
+      @apply list-none space-y-1 mt-4 mb-4;
+    }
+
+    ol > li > ol {
+      @apply flex flex-row list-none space-y-0 gap-y-4 gap-x-4 flex-wrap mt-4;
+      > li {
+        /* @apply text-xl border rounded-full py-2 px-4 border-[#75cec4] bg-[#225f58] text-[#75cec4]; */
+        @apply text-xl border rounded-xl py-2 px-4 border-[#71add1] bg-[#204961] text-[#71add1];
+        /* @apply text-xl border rounded-full py-2 px-4 border-[#73bacd] bg-[#22515e] text-[#73bacd]; */
+        h3 {
+          @apply m-0;
+        }
+      }
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .url {
+    @apply text-primary-1 hover:text-primary-2 hover:underline;
+    @apply focus:text-primary-2 focus:underline;
+  }
+  .url-active {
+    @apply text-primary-2 underline;
+  }
+  .bg-gradient-vain {
+    @apply bg-gradient-to-r from-[#4fd1c5] via-[#667eea] to-[#d53f8c];
+  }
+  .text-gradient-vain {
+    @apply text-gradient;
+    @apply bg-gradient-vain;
+  }
+  .w-main {
+    @apply w-full md:w-[768px];
+  }
+}
   /* @keyframes fade-in { from { opacity: 0; } } */
   /* @keyframes fade-out { to { opacity: 0; } } */
   /* @keyframes slide-up { */
@@ -104,53 +161,3 @@
   /* .bounce { */
   /* view-transition-name: bounce; */
   /* } */
-
-  .resume {
-    ul > li > ul {
-      @apply flex flex-row list-none space-y-0 gap-y-4 gap-x-4 flex-wrap mt-2;
-      > li {
-        /* @apply border rounded-full py-0.5 px-4 border-[#75cec4] bg-[#225f58] text-[#75cec4]; */
-        /* @apply border rounded-full py-0.5 px-4 border-[#71add1] bg-[#204961] text-[#71add1]; */
-        @apply border rounded-full py-0.5 px-4 border-[#73bacd] bg-[#22515e] text-[#73bacd];
-      }
-    }
-
-    ol {
-      @apply list-none space-y-1 mt-4 mb-4;
-    }
-
-    ol > li > ol {
-      @apply flex flex-row list-none space-y-0 gap-y-4 gap-x-4 flex-wrap mt-4;
-      > li {
-        /* @apply text-xl border rounded-full py-2 px-4 border-[#75cec4] bg-[#225f58] text-[#75cec4]; */
-        @apply text-xl border rounded-xl py-2 px-4 border-[#71add1] bg-[#204961] text-[#71add1];
-        /* @apply text-xl border rounded-full py-2 px-4 border-[#73bacd] bg-[#22515e] text-[#73bacd]; */
-      }
-    }
-  }
-}
-
-@layer utilities {
-  .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .url {
-    @apply text-primary-1 hover:text-primary-2 hover:underline;
-    @apply focus:text-primary-2 focus:underline;
-  }
-  .url-active {
-    @apply text-primary-2 underline;
-  }
-  .bg-gradient-vain {
-    @apply bg-gradient-to-r from-[#4fd1c5] via-[#667eea] to-[#d53f8c];
-  }
-  .text-gradient-vain {
-    @apply text-gradient;
-    @apply bg-gradient-vain;
-  }
-  .w-main {
-    @apply w-full md:w-[768px];
-  }
-}
