@@ -48,17 +48,18 @@ Sep 2022 - present
 - Automate data ingestion and discovery with Python, JavaScript and Puppeteer.
 - Maintain and repaired crawler configurations.
 - Collaborate with the team at Jora remotely and in the office.
-- Technologies:
-    - Python
-    - JavaScript
-    - Ruby
-    - XPath
-    - HTML
-    - CSS
-    - JSON
-    - XML
-    - SQL
-    - Web APIs
+
+#### Technologies:
+* Python
+* JavaScript
+* Ruby
+* XPath
+* HTML
+* CSS
+* JSON
+* XML
+* SQL
+* Web APIs
 
 ## Android and backend developer
 ### Unified Solutions
@@ -68,24 +69,34 @@ Apr 2022 – Jun 2022
 - Designed and developed a REST API backend to facilitate communication from the Android app to a MySQL database.
 - Deployed API to server and integrated it with existing database.
 - Implemented ability to perform CRUD (database) operations using the app.
-- Technologies:
-    * Kotlin
-    * Java
-    * Rust
-    * SQL
-    * Git
+
+#### Technologies:
+* Kotlin
+* Java
+* Rust
+* SQL
+* Git
 
 # Education
 
 --- 
 
-1. ## Bachelor of Computer Science
-    1. Swinburne University of Technology
-    2. _Software Development major_
+## Bachelor of Computer Science
+- Swinburne University of Technology
+- _Software Development major_
+- 2021-2023
 
-<!-- ### Bachelor of Computer Science, *Software Development major.* @ Swinburne University of Technology -->
-2. ## Certificates
-    1. **Rust Essential Training**: a [LinkedIn Certificate](https://www.linkedin.com/learning/certificates/f7493bbb30652a2ee63cbc25a86870a3e3a783b618a21d52dd0f8c54673cfcbc?trk=share_certificate) covering the Rust programming language
+## Certificates
+- ### Rust Essential Training
+    a [LinkedIn Certificate](https://www.linkedin.com/learning/certificates/f7493bbb30652a2ee63cbc25a86870a3e3a783b618a21d52dd0f8c54673cfcbc) covering the Rust programming language.
+- ### Advanced Rust: Managing Projects
+    an advanced [LinkedIn Certificate](https://www.linkedin.com/learning/certificates/337f4172f4daf5b3160fe70ecedb0972648b5320f9d4bab8102a61115baaec4c) covering the Cargo package manager, workspaces and project organisation.
+- ### Learning Go
+    a [LinkedIn Certificate](https://www.linkedin.com/learning/certificates/4d88c62ea7c699a0dc78656837c2202bbf7173bf16bc6cc7eb6f412f63f0a914) focussing on the design of the Go programming language and its basics.
+- ### Go Design Patterns
+    a [LinkedIn Certificate](https://www.linkedin.com/learning/certificates/0c86eda46ff3c0e0a4d73d9a2de2bf802f0800bf45a08aac174aa317322eba8a) looking at project setup and architecture.
+- ### Applied Concurrency in Go
+    an advanced [LinkedIn Certificate](https://www.linkedin.com/learning/certificates/06ab16fef392cc58cd184f766866950b009860c0202f8d0b49eb3d8f34910c0a) focussing on asynchronous programming in Go.
 
 # Projects
 ---
