@@ -10,57 +10,26 @@
     @apply font-sans;
   }
   .markdown-content {
-    hr {
-      @apply bg-gradient-vain border-0 h-1 rounded mt-1;
-    }
-    h1:not(:first-child) {
-      @apply mt-16;
-    }
-    h1 {
-      @apply text-4xl;
-    }
-    h2 {
-      @apply text-3xl mt-12;
-    }
-    h3 {
-      @apply text-2xl mt-4;
-    }
-    h4 {
-      @apply text-xl mt-4;
-    }
-    h5 {
-      @apply text-xl mt-4;
-    }
-    h6 {
-      @apply text-xl mt-4;
-    }
-    em,
-    strong {
-      font-size: inherit;
-    }
-    * {
-      @apply text-lg;
-    }
-    a {
-      @apply url;
-    }
-    p {
-      @apply my-4 /* font-serif */;
-    }
-    ol {
-      @apply list-decimal list-inside space-y-1 mt-4 mb-4;
-    }
+    hr { @apply bg-gradient-vain border-0 h-1 rounded mt-1; }
+    h1:not(:first-child) { @apply mt-16; }
+    h1 { @apply text-4xl; }
+    h2 { @apply text-3xl mt-12; }
+    h3 { @apply text-2xl mt-4; }
+    h4 { @apply text-xl mt-4; }
+    h5 { @apply text-xl mt-4; }
+    h6 { @apply text-xl mt-4; }
+    em, strong { font-size: inherit; }
+    * { @apply text-lg; }
+    a { @apply url; }
+    p { @apply my-4 /* font-serif */; }
+    ol { @apply list-decimal list-inside space-y-1 mt-4 mb-4; }
     ul {
       @apply list-disc list-inside space-y-1 mt-4 mb-4;
+      > li {
+        /* @apply indent-2; */
+      }
     }
-
-    ul ul,
-    ul ol,
-    ol ol,
-    ol ul {
-      @apply ps-4;
-    }
-
+    ul ul, ul ol, ol ol, ol ul { @apply ps-4; }
     img {
       /* Add style attribute to images:
      * background-image: url(img/img-lowres.jpg); */
@@ -75,34 +44,46 @@
   }
 
   .resume-content {
-    #experience {
-      ~ h4 {
-        @apply text-4xl;
-      }
-    }
-    ul > li > ul {
-      @apply flex flex-row list-none space-y-0 gap-y-4 gap-x-4 flex-wrap mt-2;
-      > li {
-        /* @apply border rounded-full py-0.5 px-4 border-[#75cec4] bg-[#225f58] text-[#75cec4]; */
-        /* @apply border rounded-full py-0.5 px-4 border-[#71add1] bg-[#204961] text-[#71add1]; */
-        @apply border rounded-full py-0.5 px-4 border-[#73bacd] bg-[#22515e] text-[#73bacd];
+    hr { @apply bg-gradient-vain border-0 h-1 rounded mt-1; }
+    h1:not(:first-child) { @apply mt-16; }
+    h1 { @apply text-4xl; }
+    h2 { @apply text-3xl mt-12; }
+    h3 { @apply text-2xl mt-4; }
+    h4 { @apply text-xl mt-4; }
+    h5 { @apply text-xl mt-4; }
+    h6 { @apply text-xl mt-4; }
+    em, strong { font-size: inherit; }
+    * { @apply text-lg; }
+    a { @apply url; }
+    p { @apply my-4 /* font-serif */; }
+    ol { @apply list-decimal space-y-1 mt-4 mb-4 ps-5; }
+    ul { @apply list-disc space-y-1 mt-4 mb-4 ps-5; }
+
+    #experience ~ h4[id^="technologies"]:not(#education ~ h4[id^="technologies"]) {
+      + ul {
+      @apply flex flex-row list-none space-y-0 gap-4 flex-wrap mt-2 ps-0;
+      > li { @apply border rounded-full py-0 px-4 border-[#73bacd] bg-[#22515e] text-[#73bacd];}
       }
     }
 
-    ol {
-      @apply list-none space-y-1 mt-4 mb-4;
+    #bachelor-of-computer-science + p {
+      @apply text-xl leading-loose;
+    > strong { @apply whitespace-nowrap border rounded-md py-1 px-2 border-[#71add1] bg-[#204961] text-[#71add1]; }
+    }
+    #certificates ~ ul:not(#projects ~ ul) {
+      @apply flex flex-col gap-4 ps-0;
+      > li {
+        @apply list-none text-xl border rounded-xl py-2 px-4 border-[#71add1] bg-[#204961] text-[#71add1];
+      }
     }
 
-    ol > li > ol {
-      @apply flex flex-row list-none space-y-0 gap-y-4 gap-x-4 flex-wrap mt-4;
-      > li {
-        /* @apply text-xl border rounded-full py-2 px-4 border-[#75cec4] bg-[#225f58] text-[#75cec4]; */
-        @apply text-xl border rounded-xl py-2 px-4 border-[#71add1] bg-[#204961] text-[#71add1];
-        /* @apply text-xl border rounded-full py-2 px-4 border-[#73bacd] bg-[#22515e] text-[#73bacd]; */
-        h3 {
-          @apply m-0;
-        }
-      }
+    #experience ~ h3:not(#education ~ h3) {
+      /* ~ ul li { */
+      /*     @apply ps-8 -indent-8; */
+      /* } */
+      /* ~ ul li::first-line { */
+          /* @apply indent-0; */
+      /* } */
     }
   }
 }

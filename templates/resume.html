@@ -26,7 +26,7 @@
     <a href="/resume/" id="site-title" class="my-4">
       <h1 class="text-5xl font-semibold text-center">{{ config.extra.author }}</h1>
       <div id="progress" class="h-1 mt-2 mb-4 bg-gradient-vain rounded"></div>
-      <h2 class="-mt-3 text-2xl font-serif italic tracking-widest text-center">{{ page.extra.career }}</h2>
+      <h2 class="-mt-3 text-[1.65rem] font-serif italic tracking-widest text-center">{{ page.extra.career }}</h2>
     </a>
   </div>
 
@@ -50,7 +50,7 @@
     <a href="{{ info.link }}">{{ info.text }}</a>
     {% endfor %}#}
 
-<div class="markdown-content resume-content">
+<div class="resume-content">
   {{ page.content | safe }}
 </div>
 
