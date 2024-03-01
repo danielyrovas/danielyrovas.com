@@ -1,5 +1,5 @@
 +++
-title = 'Tailwindcss Is Awesome'
+title = 'TailwindCSS Is Awesome'
 date = 2023-11-26T16:26:31+11:00
 tags = ["Web Development"]
 +++

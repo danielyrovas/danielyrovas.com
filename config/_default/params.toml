@@ -9,8 +9,8 @@ colorScheme = "avocado"
 defaultAppearance = "dark"
 autoSwitchAppearance = false
 
-enableSearch = true
-enableCodeCopy = false
+enableSearch = false
+enableCodeCopy = true
 
 mainSections = ["posts"]
 # robots = ""
@@ -95,14 +95,14 @@ smartTOCHideUnfocusedChildren = true
   excludedKinds = ["taxonomy", "term"]
 
 [taxonomy]
-  showTermCount = true
+  showTermCount = false
   showHero = true
   heroStyle = "background"
   showBreadcrumbs = false
   showViews = false
   showLikes = false
   showTableOfContents = false
-  cardView = true
+  cardView = false
 
 [term]
   showHero = true

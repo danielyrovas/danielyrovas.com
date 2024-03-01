@@ -3,10 +3,11 @@ title = 'Introducing Linklater'
 date = 2024-02-21T17:39:46+11:00
 draft = false
 project_url = 'https://github.com/danielyrovas/linklater'
-tags = ["Android", "Software Development"]
+tags = ["Android", "Software Development", "FOSS"]
 +++
 
-## [LinkDing](https://github.com/sissbruecker/linkding/) is great
+## LinkDing is great
+
 I've been happily bookmarking the entire internet with [LinkDing](https://github.com/sissbruecker/linkding/) for over two years now. It has served me quite well for archiving content and helping me reduce the number of tabs I have open (*waay too many*).
 
 ## No Android client
@@ -14,12 +15,15 @@ One major pain point in my usage of LinkDing has been the lack of a solid Androi
 
 I don't want my browster tab icon to become this: :infinity:
 
-## [Linklater](https://github.com/danielyrovas/linklater)
+## Linklater
 
 Linklater is a simple app that provides exactly this functionality: save bookmarks using the Android share menu.
 
 You can download it from the releases on GitHub [here :link:](https://github.com/danielyrovas/linklater/releases).
 
-#### Note:
+### Note
 
 If you run into a Play Protect screen, you may need to click allow install from an unknown developer - I have not released an app to the Play Store and Play Protect does not recognise the signing key the app has been signed by.
+
+### Support
+If you would like to suggest ideas for new features or report issues with the app, you can do so on the [issue tracker](https://github.com/danielyrovas/linklater/issues).
